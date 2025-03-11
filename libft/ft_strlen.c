@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
-size_t	ft_strlen(const char *str)
+ssize_t	ft_strlen(const char *str)
 {
-	size_t	i;
+	ssize_t	i;
 
 	if (!str)
 		return (-1);
