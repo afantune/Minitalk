@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afantune <afantune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/12 12:40:11 by afantune          #+#    #+#             */
-/*   Updated: 2025/03/12 13:56:35 by afantune         ###   ########.fr       */
+/*   Created: 2024/10/25 14:02:45 by afantune          #+#    #+#             */
+/*   Updated: 2025/03/12 13:56:15 by afantune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-void	ft_error(const char *message)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	if (!message)
-		message = "Unknown error";
-	if (ft_strlen(message) > 0 && (ft_strlen(message) < 7
-		|| ft_strncmp(message, "Error: ", 7) != 0))
-        write(2, "Error: ", 7);
-	write(2, message, ft_strlen(message));
-	write(2, "\n", 1);
-	exit(1);
+	if (n == 0)
+		return (0);
+	n--;
+	while (n && *s1 && *s1 == *s2)
+	{
+		s1++;
+		s2++;
+		n--;
+	}
+	return ((unsigned char)*s1 - (unsigned char)*s2);
 }
