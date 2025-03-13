@@ -6,7 +6,7 @@
 /*   By: afantune <afantune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:35:14 by afantune          #+#    #+#             */
-/*   Updated: 2025/03/12 13:25:40 by afantune         ###   ########.fr       */
+/*   Updated: 2025/03/13 13:02:44 by afantune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,6 @@ void	ft_kill(pid_t pid, int signal)
 	if (kill(pid, signal) == -1)
 	{
 		ft_error("Error: Invalid PID\n");
+		exit(1);
 	}
 }

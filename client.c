@@ -6,7 +6,7 @@
 /*   By: afantune <afantune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 13:01:56 by afantune          #+#    #+#             */
-/*   Updated: 2025/03/12 13:39:42 by afantune         ###   ########.fr       */
+/*   Updated: 2025/03/13 15:12:12 by afantune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,16 @@ static void	send_char(pid_t pid, char c)
 {
 	int	bit;
 
-	bit = 7;
-	while (bit >= 0)
+	bit = 0;
+	while (bit < 8)
 	{
-		if ((c >> bit) & 1)
+		if (c & (128 >> bit))
 			ft_kill(pid, SIGUSR2);
 		else
 			ft_kill(pid, SIGUSR1);
-		bit--;
+		bit++;
+		usleep(42);
 	}
-    printf("Sending char: %c\n", c);
-    usleep(100);
 }
 
 static void	send_message(pid_t pid, char *message)
@@ -51,7 +50,7 @@ int	main(int argc, char **argv)
 		ft_error("Usage: ./client <PID> <message>");
 	}
 	pid = ft_atoi(argv[1]);
-	if (pid == -1)
+	if (pid < 1)
 		ft_error("Invalid PID");
 	send_message(pid, argv[2]);
 	return (0);
