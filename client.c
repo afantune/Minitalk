@@ -6,7 +6,7 @@
 /*   By: afantune <afantune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 13:01:56 by afantune          #+#    #+#             */
-/*   Updated: 2025/03/13 15:12:12 by afantune         ###   ########.fr       */
+/*   Updated: 2025/03/17 13:28:59 by afantune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,15 @@ static void	send_char(pid_t pid, char c)
 	while (bit < 8)
 	{
 		if (c & (128 >> bit))
+		{
 			ft_kill(pid, SIGUSR2);
+		}
 		else
+		{
 			ft_kill(pid, SIGUSR1);
+		}
 		bit++;
-		usleep(42);
+		usleep(500);
 	}
 }
 

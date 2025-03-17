@@ -6,7 +6,7 @@
 /*   By: afantune <afantune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 13:01:45 by afantune          #+#    #+#             */
-/*   Updated: 2025/03/13 15:10:41 by afantune         ###   ########.fr       */
+/*   Updated: 2025/03/17 13:28:57 by afantune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ void	sig_handler(int signal, siginfo_t *info, void *context)
 		bits = 0;
 		if (c == '\0' && write(STDOUT_FILENO, "\n", 1))
 		{
+			bits = 0;
 			c = 0;
+			pid = 0;
 			return ;
 		}
 		write(1, &c, 1);
